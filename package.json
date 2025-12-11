@@ -15,7 +15,6 @@
     "@emotion/is-prop-valid": "latest",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mlc-ai/web-llm": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/material-pigment-css": "latest",

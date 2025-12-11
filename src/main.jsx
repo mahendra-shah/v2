@@ -39,7 +39,9 @@ class ErrorBoundary extends React.Component {
           }}
         >
           <h1 style={{ color: "#dc2626", marginBottom: "16px" }}>Something went wrong</h1>
-          <p style={{ color: "#6b7280", marginBottom: "16px" }}>Please refresh the page or try again later.</p>
+          <p style={{ color: "#6b7280", marginBottom: "16px" }}>
+            {this.state.error?.message || "Please refresh the page or try again later."}
+          </p>
           <button
             onClick={() => window.location.reload()}
             style={{
@@ -62,14 +64,20 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <ErrorBoundary>
-    <LoadingProvider>
-      <LoginProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </LoginProvider>
-    </LoadingProvider>
-  </ErrorBoundary>,
-)
+const rootElement = document.getElementById("root")
+
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <ErrorBoundary>
+      <LoadingProvider>
+        <LoginProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </LoginProvider>
+      </LoadingProvider>
+    </ErrorBoundary>,
+  )
+} else {
+  console.error("Root element not found")
+}
